@@ -1,6 +1,7 @@
 import java.util.ArrayList;
-import java.util.Map;
+import com.sun.org.apache.xpath.internal.res.XPATHErrorResources_zh_CN;
 import java.util.HashMap;
+import java.util.Map;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
@@ -10,30 +11,31 @@ public class App {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
-    post("/heros", (request, response) -> {
+    get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-  
-      ArrayList<Hero> heros = request.session().attribute("heros");
-      if (heros == null) {
-        heros = new ArrayList<Hero>();
-        request.session().attribute("heros", heros);
-      }
-  
-      String name = request.queryParams("heroName");
-      Hero newHero = new Hero(name);
-      heros.add(newHero);
-  
-      model.put("template", "templates/success.vtl");
-      return new ModelAndView(model, layout);
-     }, new VelocityTemplateEngine());
-
-     get("/", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("heros", request.session().attribute("heros"));
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("heros/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/hero-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
+    get("/heros", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("heros", Hero.all());
+      model.put("template", "templates/heros.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/heros", (request,response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String description = request.queryParams("description");
+      Hero newHero = new Hero(description);
+      model.put("template", "templates/success.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }

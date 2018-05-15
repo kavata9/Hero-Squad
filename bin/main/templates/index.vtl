@@ -1,37 +1,4 @@
-<h1>Hero list!</h1>
-#if ($heros)
-  <ul>
-    #foreach ($hero in $heros)
-      <li>$hero.getDescription()</li>
-    #end
-  </ul>
-#else
-  <p>No heros!</p>
-#end
+<h1>Welcome to hero squad Application!!</h1>
 
-<p>Add a new Hero:</p>
-
-<form action="/heros" method="post">
-  <div class="form-group">
-  <label for="name">heros Name</label>
-  <input id="name" name="heroName" class="form-control" type="text">
-  </div>
-
-  <div class="form-group">
-  <label for="age">heros Age</label>
-  <input id="age" name="age" class="form-control" type="number">
-  </div>
-
-  <div class="form-group">
-  <label for="power">heros Power</label>
-  <input id="power" name="power" class="form-control" type="text">
-  </div>
-
-  <div class="form-group">
-  <label for="weakness">heros Weakness</label>
-  <input id="weakness" name="weakness" class="form-control" type="text">
-  </div>
-
-
-  <button type="submit" class="btn btn-danger">Add hero</button>
-</form>
+<a href="/heros/new">Add a new hero</a>
+<a href="/heros">View all current heros</a>

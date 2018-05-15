@@ -1,6 +1,4 @@
 import org.junit.*;
-import org.w3c.dom.html.HTMLTableRowElement;
-
 import static org.junit.Assert.*;
 
 public class HeroTest {
@@ -14,5 +12,4 @@ public class HeroTest {
     Hero myHero = new Hero("Thor");
     assertEquals("Thor", myHero.getDescription());
   }
-
 }
