@@ -19,8 +19,8 @@ public class App {
         request.session().attribute("heros", heros);
       }
   
-      String description = request.queryParams("description");
-      Hero newHero = new Hero(description);
+      String name = request.queryParams("heroName");
+      Hero newHero = new Hero(name);
       heros.add(newHero);
   
       model.put("template", "templates/success.vtl");
