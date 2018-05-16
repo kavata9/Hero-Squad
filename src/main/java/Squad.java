@@ -38,32 +38,32 @@ public class Squad {
     instances.clear();
   }
 
-  public int getId() {
-    return mId;
-  }
+  // public int getId() {
+  //   return mId;
+  // }
 
-  public static Squad find(int id) {
-    return instances.get(id-1);
-  }
+  // public static Squad find(int id) {
+  //   return instances.get(id-1);
+  // }
 
-  public List<Hero> getHeroes() {
-    return mHeroes;
-  }
+  // public List<Hero> getHeroes() {
+  //   return mHeroes;
+  // }
 
-  public void addHero(Hero hero) {
-    mHeroes.add(hero);
-  }
+  // public void addHero(Hero hero) {
+  //   mHeroes.add(hero);
+  // }
 
-  public static boolean heroAlreadyExists(Hero newHero) {
-    boolean exists = false;
-    for(Squad squad: instances){
-      for(Hero hero: squad.getHeroes()){
-        if (hero.getName().equals(newHero.getName())) {
-          exists = true;
-        }
-      }
-    }
-    return exists;
-  }
+  // public static boolean heroAlreadyExists(Hero newHero) {
+  //   boolean exists = false;
+  //   for(Squad squad: instances){
+  //     for(Hero hero: squad.getHeroes()){
+  //       if (hero.getName().equals(newHero.getName())) {
+  //         exists = true;
+  //       }
+  //     }
+  //   }
+  //   return exists;
+  // }
 
 }

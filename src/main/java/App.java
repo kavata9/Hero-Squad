@@ -12,15 +12,15 @@ public class App {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
-    ProcessBuilder process = new ProcessBuilder();
-     Integer port;
-     if (process.environment().get("PORT") != null) {
-         port = Integer.parseInt(process.environment().get("PORT"));
-     } else {
-         port = 4567;
-     }
+    // ProcessBuilder process = new ProcessBuilder();
+    //  Integer port;
+    //  if (process.environment().get("PORT") != null) {
+    //      port = Integer.parseInt(process.environment().get("PORT"));
+    //  } else {
+    //      port = 4567;
+    //  }
 
-    setPort(port);
+    // setPort(port);
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
@@ -29,11 +29,6 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    // get("heroes/new", (request, response) -> {
-    //   Map<String, Object> model = new HashMap<String, Object>();
-    //   model.put("template", "templates/hero-form.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
 
     post("/heroes", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
@@ -60,23 +55,11 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/heroes/:id", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      Hero hero = Hero.find(Integer.parseInt(request.params(":id")));
-      model.put("hero", hero);
-      model.put("template", "templates/hero.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    // post("/heroes", (request, response) -> {
+    // get("/heroes/:id", (request, response) -> {
     //   Map<String, Object> model = new HashMap<String, Object>();
-    //   String name = request.queryParams("name");
-    //   int age = Integer.parseInt(request.queryParams("age"));
-    //   String power = request.queryParams("power");
-    //   String weakness = request.queryParams("weakness");
-    //   Hero newHero = new Hero(name, age, power, weakness);
-    //
-    //   model.put("template", "templates/success.vtl");
+    //   Hero hero = Hero.find(Integer.parseInt(request.params(":id")));
+    //   model.put("hero", hero);
+    //   model.put("template", "templates/hero.vtl");
     //   return new ModelAndView(model, layout);
     // }, new VelocityTemplateEngine());
 
@@ -103,49 +86,49 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/squads/:id", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      Squad squad = Squad.find(Integer.parseInt(request.params(":id")));
-      model.put("squad", squad);
-      model.put("template", "templates/squad.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
+    // get("/squads/:id", (request, response) -> {
+    //   Map<String, Object> model = new HashMap<String, Object>();
+    //   Squad squad = Squad.find(Integer.parseInt(request.params(":id")));
+    //   model.put("squad", squad);
+    //   model.put("template", "templates/squad.vtl");
+    //   return new ModelAndView(model, layout);
+    // }, new VelocityTemplateEngine());
 
-    get("squads/:id/heroes/new", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      Squad squad = Squad.find(Integer.parseInt(request.params(":id")));
-      model.put("squad", squad);
-      model.put("template", "templates/squad-heroes-form.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
+    // get("squads/:id/heroes/new", (request, response) -> {
+    //   Map<String, Object> model = new HashMap<String, Object>();
+    //   Squad squad = Squad.find(Integer.parseInt(request.params(":id")));
+    //   model.put("squad", squad);
+    //   model.put("template", "templates/squad-heroes-form.vtl");
+    //   return new ModelAndView(model, layout);
+    // }, new VelocityTemplateEngine());
 
-    post("/heroes", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
+  //   post("/heroes", (request, response) -> {
+  //     Map<String, Object> model = new HashMap<String, Object>();
 
-      Squad squad = Squad.find(Integer.parseInt(request.queryParams("squadId")));
+  //     Squad squad = Squad.find(Integer.parseInt(request.queryParams("squadId")));
 
-      String name = request.queryParams("name");
-      int age = Integer.parseInt(request.queryParams("age"));
-      String power = request.queryParams("power");
-      String weakness = request.queryParams("weakness");
-      Hero newHero = new Hero(name, age, power, weakness);
+  //     String name = request.queryParams("name");
+  //     int age = Integer.parseInt(request.queryParams("age"));
+  //     String power = request.queryParams("power");
+  //     String weakness = request.queryParams("weakness");
+  //     Hero newHero = new Hero(name, age, power, weakness);
 
-      if (Squad.heroAlreadyExists(newHero)) {
-        String heroExists = "Hero " + name + " already exists in a squad";
-        model.put("heroExists", heroExists);
-       }
-       else if (squad.getHeroes().size() >= squad.getSize()) {
-         String sizeMet = "Squad size already met";
-         model.put("sizeMet", sizeMet);
-       }
-       else{
-         squad.addHero(newHero);
-       }
+  //     if (Squad.heroAlreadyExists(newHero)) {
+  //       String heroExists = "Hero " + name + " already exists in a squad";
+  //       model.put("heroExists", heroExists);
+  //      }
+  //      else if (squad.getHeroes().size() >= squad.getSize()) {
+  //        String sizeMet = "Squad size already met";
+  //        model.put("sizeMet", sizeMet);
+  //      }
+  //      else{
+  //        squad.addHero(newHero);
+  //      }
 
-      model.put("squad", squad);
-      model.put("template", "templates/squad-heroes-success.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
+  //     model.put("squad", squad);
+  //     model.put("template", "templates/squad-heroes-success.vtl");
+  //     return new ModelAndView(model, layout);
+  //   }, new VelocityTemplateEngine());
 
   }
 }
