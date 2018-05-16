@@ -42,41 +42,10 @@ public class SquadTest {
     assertEquals(Squad.all().size(), 0);
   }
 
-  // @Test
-  // public void getId_squadsInstantiatesWithAnId_1() {
-  //   Squad.clear();
-  //   Squad testSquad = new Squad("Avengers",7,"protect the earth");
-  //   assertEquals(1, testSquad.getId());
-  // }
-
-  // @Test
-  // public void find_returnsSquadWithSameId_secondSquad() {
-  //   Squad.clear();
-  //   Squad firstSquad = new Squad("Avengers",7,"protect the earth");
-  //   Squad secondSquad = new Squad("Powerpuff Girls",3,"protect the magic world");
-  //   assertEquals(Squad.find(secondSquad.getId()), secondSquad);
-  // }
-
-  // @Test
-  // public void getHeroes_initiallyReturnsEmptyList_ArrayList() {
-  //   Squad.clear();
-  //   Squad testSquad = new Squad("Avengers",7,"protect the earth");
-  //   assertEquals(0, testSquad.getHeroes().size());
-  // }
-
-  // @Test
-  // public void addHero_addsHeroToList_true() {
-  //   Squad testSquad = new Squad("Avengers",7,"protect the earth");
-  //   Hero testHero = new Hero("Superman",30,"Fly","Kryptonite");
-  //   testSquad.addHero(testHero);
-  //   assertTrue(testSquad.getHeroes().contains(testHero));
-  // }
-
-  // @Test
-  // public void heroAlreadyExists_checksIfHeroExistsinSquads_true() {
-  //   Squad testSquad = new Squad("Avengers",7,"  Protect the earth");
-  //   Hero testHero = new Hero("Superwoman",20,"Fly","Kryptonite");
-  //   testSquad.addHero(testHero);
-  //   assertTrue(testSquad.heroAlreadyExists(testHero));
-  // }
+  @Test
+  public void getId_squadsInstantiateWithAnId_1() {
+    Squad firstSquad = new Squad("Avengers",7,"protect the earth");
+    Squad secondSquad = new Squad("Powerpuff Girls",3,"protect the magic world");
+    assertEquals(Squad.find(secondSquad.getId()), secondSquad);
+  }
 }
