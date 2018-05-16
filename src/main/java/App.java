@@ -24,7 +24,7 @@ public class App {
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      // model.put("heroes", request.session().attribute("heroes"));
+      model.put("heroes", request.session().attribute("heroes"));
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -35,7 +35,25 @@ public class App {
     //   return new ModelAndView(model, layout);
     // }, new VelocityTemplateEngine());
 
-    get("/heroes", (request, response) -> {
+    post("/heroes", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String name = request.queryParams("heroname");
+      int age = Integer.parseInt(request.queryParams("heroage"));
+      String power = request.queryParams("heropower");
+      String weakness = request.queryParams("heroweakness");
+      Hero add = new Hero(name, age, power, weakness);
+      model.put("template", "templates/success.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/hero/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      // model.put("heroes", Hero.all());
+      model.put("template", "templates/hero-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/heros", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("heroes", Hero.all());
       model.put("template", "templates/heroes.vtl");
