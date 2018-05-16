@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <h2 class="display-3">Add hero to $squad.getName()</h2>
   <br>
-  <form action="/heroes" method="post">
+  <form action="/heroes/$squad.getId()" method="post">
     <input id="squadId" name="squadId" type="hidden" value="$squad.getId()">
 
     <div class="form-group">

@@ -30,13 +30,16 @@ public class App {
     }, new VelocityTemplateEngine());
 
 
-    post("/heroes", (request, response) -> {
+    post("/heroes/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("heroname");
       int age = Integer.parseInt(request.queryParams("heroage"));
       String power = request.queryParams("heropower");
       String weakness = request.queryParams("heroweakness");
       Hero add = new Hero(name, age, power, weakness);
+      Squad newHero = Squad.find(Integer.parseInt(request.params(":id")));
+      newHero.addHero(add);
+
       model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
