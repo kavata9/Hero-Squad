@@ -36,7 +36,7 @@ public class HeroTest {
   @Test
   public void all_returnsAllInstancesOfHero_true() {
     Hero firstHero = new Hero("Superman",20,"Fly","Kryptonite");
-    Hero secondHero = new Hero("Ironman",50,"Fly","Drinking");
+    Hero secondHero = new Hero("Wonderwoman",28,"Fly","Emotional");
     assertEquals(true, Hero.all().contains(firstHero));
     assertEquals(true, Hero.all().contains(secondHero));
   }
@@ -58,7 +58,7 @@ public class HeroTest {
   @Test
   public void find_returnsHeroWithSameId_secondHero() {
     Hero firstHero = new Hero("Superman",20,"Fly","Kryptonite");
-    Hero secondHero = new Hero("Ironman",50,"Fly","Drinking");
+    Hero secondHero = new Hero("Wonderwoman",28,"Fly","Emotional");
     assertEquals(Hero.find(secondHero.getId()), secondHero);
   }
 
