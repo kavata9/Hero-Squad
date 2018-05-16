@@ -54,4 +54,12 @@ public void getHeroes_initiallyReturnsEmptyList_ArrayList() {
   Squad testSquad = new Squad("Avengers",7,"protect the earth");
   assertEquals(0, testSquad.getHeroes().size());
 }
+
+@Test
+public void addHero_addsHeroToList_true() {
+  Squad testSquad = new Squad("Avengers",7,"protect the earth");
+  Hero testHero = new Hero("Superman",20,"Fly","Kryptonite");
+  testSquad.addHero(testHero);
+  assertTrue(testSquad.getHeroes().contains(testHero));
+}
 }

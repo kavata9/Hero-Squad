@@ -49,5 +49,9 @@ public class Squad {
     return mHeroes;
   }
 
+  public void addHero(Hero hero) {
+    mHeroes.add(hero);
+  }
+
 
 }
