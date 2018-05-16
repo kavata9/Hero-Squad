@@ -48,4 +48,10 @@ public class SquadTest {
     Squad secondSquad = new Squad("Powerpuff Girls",3,"protect the magic world");
     assertEquals(Squad.find(secondSquad.getId()), secondSquad);
   }
+  @Test
+public void getHeroes_initiallyReturnsEmptyList_ArrayList() {
+  Squad.clear();
+  Squad testSquad = new Squad("Avengers",7,"protect the earth");
+  assertEquals(0, testSquad.getHeroes().size());
+}
 }
