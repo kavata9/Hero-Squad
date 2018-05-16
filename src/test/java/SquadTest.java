@@ -5,7 +5,7 @@ public class SquadTest {
 
   @Test
   public void squad_instantiatesCorrectly_true() {
-    Squad testSquad = new Squad("Avengers",5,"protect the planets");
+    Squad testSquad = new Squad("Avengers",5,"protect the earth");
     assertEquals(true, testSquad instanceof Squad);
   }
 
