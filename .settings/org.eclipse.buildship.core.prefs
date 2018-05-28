@@ -1,8 +1,0 @@
-#Tue May 15 22:50:32 EAT 2018
-connection.gradle.distribution=GRADLE_DISTRIBUTION(LOCAL_INSTALLATION(/home/agnes/.sdkman/candidates/gradle/current))
-override.workspace.settings=true
-auto.sync=false
-gradle.user.home=
-connection.project.dir=
-build.scans.enabled=false
-offline.mode=false
